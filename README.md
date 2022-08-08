@@ -2,6 +2,8 @@ Newstore Associate App Loyalty Giftcard Webview Template
 
 In this repo is a WebView template used in the NewStore Associate App. The WebView is a screen that can be navigated to during checkout to view fetched customer loyalty details, as well as copy fetched gift card codes to the phone's clipboard, to be used during checkout. 
 
+Demo: https://user-images.githubusercontent.com/16912353/183489514-cf2d5240-3ec4-4476-9d2a-59a5e71f8ad3.mp4
+
 Install software:
 - Node.js - `https://nodejs.org/en/`
 - create-react-app - run `npx create-react-app my-app`
