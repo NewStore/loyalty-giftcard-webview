@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import CopyField from './components/CopyField';
 import {loyaltyUrl} from './constants';
+import axios from 'axios';
 //loyaltyData can be used for local testing if the lambda isn't set up
 // webViewData can be used for testing in local computer's web browser - which doesn't receive window.NEWSTORE
 //import { webviewData, loyaltyData } from './sample_data'
@@ -80,17 +81,22 @@ function App(props) {
   const token = window?.NEWSTORE?.securityToken;
   const dimensions = window?.NEWSTORE?.dimensions;
 
+  const reqBody = {
+    email: cart.customerEmail,
+    cart: cart,
+    token: token,
+  }
+
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch(loyaltyUrl, {
-        method: "POST",
-        body: {
-          email: cart.customerEmail,
-          cart: cart,
-          token: token,
+      const res = await axios.post(loyaltyUrl, reqBody, {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
         }
       })
-      return res.json()
+
+      return res.data
     }
 
     fetchData()
